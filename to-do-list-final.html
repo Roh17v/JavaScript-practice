@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo list</title>
+</head>
+<style>
+  body{
+    font-family: Arial;
+    font-size: 17px;
+  }
+
+  .todo-list-grid,
+  .todo-list-item-grid{
+    display: grid;
+    grid-template-columns: 200px 150px 100px;
+    column-gap: 10px;
+    row-gap: 10px;
+    align-items: center;
+  }
+  .todo-list-grid{
+    margin-bottom: 10px;
+    align-items: stretch;
+  }
+
+.todo-input,
+.date-input{
+  font-size: 15px;
+  padding: 6px;
+}
+
+.add-button{
+  background-color: green;
+  border: none;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.delete-todo-button{
+  background-color: darkred;
+  color: white;
+  font-size: 15px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+</style>
+<body>
+  <p>Todo List</p>
+  <div class="todo-list-grid">
+    <input type="text" class="js-todo-input todo-input" placeholder="Todo name">
+    <input type="date" class="js-date-input date-input">
+    <button class="add-button js-add-todo-button">Add</button>
+  </div>
+  <div class="js-todo-list-item todo-list-item-grid">
+    <div>
+  <script>
+    let todoList = [
+      {
+        name: 'cook food',
+        date: '2023-04-14'
+      }
+      ,
+      {
+        name: 'wash dishes',
+        date: '2023-05-24'
+      }
+    ];
+
+    renderTodoList();
+
+    function renderTodoList()
+    {
+      let todoListHTML = '';
+      todoList.forEach((todoObject,index) =>
+      {
+        const{name,date} = todoObject;
+        const html = `
+        <div>${name}</div>
+        <div>${date}</div>
+        <button class="delete-todo-button js-delete-todo-button">Delete
+          </button>
+        `;
+        todoListHTML += html;
+      }
+      );
+      document.querySelector('.js-todo-list-item').innerHTML = todoListHTML;
+      
+      document.querySelectorAll('.js-delete-todo-button')
+        .forEach((deleteButton,index) =>{
+          deleteButton.addEventListener('click',() =>{
+            todoList.splice(index,1);
+            renderTodoList();
+          })
+        })
+    }
+
+    document.querySelector('.js-add-todo-button')
+      .addEventListener('click', () =>{
+        addTodo();
+      })
+
+    function addTodo()
+    {
+      const inputElement = document.querySelector('.js-todo-input');
+      const dateInputElement = document.querySelector('.js-date-input');
+
+      const name = inputElement.value;
+      const date = dateInputElement.value;
+      todoList.push({
+        name,
+        date
+      });
+      
+      inputElement.value = '';
+      dateInputElement.value = '';
+      renderTodoList();
+    }
+  </script>
+</body>
+</html>

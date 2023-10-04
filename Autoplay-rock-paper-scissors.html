@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dom-RockPaperScissors</title>
+  <link rel="stylesheet" href="styles/Autoplay-rock-paper-scissors.css">
+</head>
+<body>
+  <p class="title">
+    Rock Paper Scissors
+  </p>
+
+  <button class="rock-button js-rock-button">
+    ✊
+  </button>
+  <button class="paper-button js-paper-button">
+    🖐
+  </button>
+  <button class="scissors-button js-scissors-button">
+    ✌
+  </button>
+
+  <p class="js-result result"></p>
+  <p class="js-moves moves"></p>
+
+  <p class="js-score"></p>
+  <button class="reset-button" onclick="
+    score.win = 0;
+    score.lose = 0;
+    score.tie = 0;
+    localStorage.removeItem('score');
+    updateScoreElement();
+  ">
+    Reset Score
+  </button>
+  <button class="js-auto-play-button" onclick="
+    autoPlay();
+  ">
+    Auto Play
+  </button>
+  <script src="scripts/Autoplay-rock-paper-scissors.js"></script>
+</body>
+</html>

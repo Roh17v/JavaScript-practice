@@ -1,0 +1,48 @@
+body
+    {
+      background-color: black;
+      font-family: Arial;
+    }
+
+    .container
+    {
+      display: grid;
+      grid-template-columns:50px 50px 50px 50px;
+      column-gap: 20px;
+      row-gap: 15px;
+    }
+
+
+    .digits{
+      border: none;
+      font-size: 26px;
+      color: white;
+      background-color: rgb(51,51,51);
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .operators
+    {
+      color: white;
+      background-color: rgb(254, 160, 10);
+      border: none;
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .clear-button{
+      font-size: 17px;
+    }
+
+    .result{
+      color:white;
+      font-size: 45px;
+      margin: 0px;
+      margin-bottom: 15px;
+    }

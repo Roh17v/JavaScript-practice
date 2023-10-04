@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><To-Do></To-Do></title>
+  <style>
+    body{
+      font-size: 17px;
+      font-family: Arial;
+    }
+
+    .title
+    {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <p>Todo List Practice 1</p>
+  <input type="text" placeholder="Todo name" class="js-input">
+  <button onclick="
+    addTodo();
+  ">Add</button>
+
+  <p class="title">Todo List Practice 2</p>
+  <input class="js-input2" type="text" placeholder="Todo name">
+  <button onclick="
+    addTodo2();
+  ">Add</button>
+  <div class="js-display"></div>
+
+  <script>
+    let list1 = [];
+    function addTodo()
+    {
+      const inputElement = document.querySelector(".js-input");
+
+      list1.push(inputElement.value);
+      console.log(list1); 
+      inputElement.value = '';
+    }
+
+    let todoListHtml = '';
+    function addTodo2()
+    {
+      const inputElement = document.querySelector(".js-input2");
+
+      const html = `<p>${inputElement.value}</p>`;
+      todoListHtml += html;
+
+      inputElement.value = '';
+      const paragraphElement = document.querySelector(".js-display");
+
+      paragraphElement.innerHTML = todoListHtml;
+      console.log(todoListHtml);
+    }
+  </script>
+</body>
+</html>
